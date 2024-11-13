@@ -1,18 +1,12 @@
-import * as core from '@actions/core';
-import * as github from '@actions/github';
+import { validLevel } from './valid-levels';
 
-export async function run(): Promise<void> {
-  const LEVELS = ['major', 'minor', 'patch'];
-  try {
-    const level = core.getInput('level');
-    const currentVersion = core.getInput('current_version');
+export async function run(inputs: {
+  level: any;
+  currentVersion: any;
+}): Promise<void> {
+  const { level, currentVersion } = inputs;
 
-    if (!LEVELS.includes(level)) {
-      throw Error(`${level} is invalid, levels valid are ${LEVELS.join(', ')}`);
-    }
+  validLevel(level);
 
-    console.log({ currentVersion, level }, github.context);
-  } catch (error) {
-    core.setFailed(error.message);
-  }
+  console.log({ currentVersion, level });
 }
