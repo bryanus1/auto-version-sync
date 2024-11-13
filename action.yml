@@ -13,6 +13,12 @@ inputs:
     required: false
     description: A semver update level ({major, minor, patch}).
 
+outputs:
+  new_version:
+    description: The bumped semver version.
+  new_version_without_v:
+    description: The bumped semver version without "v".
+
 runs:
   using: node20
   main: lib/index.js
