@@ -17,8 +17,19 @@ export async function run(inputs: {
   }
 
   const newVersion = semver.inc(currentVersion, level as any);
-  const message = `ci: update version package.json to ${newVersion}`;
 
+  await runInWorkspace(
+    'git',
+    ['config', 'user.name', 'github-actions[bot]'],
+    workspace,
+  );
+  await runInWorkspace(
+    'git',
+    ['config', 'user.email', 'github-actions[bot]@users.noreply.github.com'],
+    workspace,
+  );
+
+  const message = `ci: update version package.json to ${newVersion}`;
   const args = ['version', newVersion, '--allow-same-version', '-m', message];
   await runInWorkspace('npm', args, workspace);
   await runInWorkspace('git', ['push', '--follow-tags'], workspace);
