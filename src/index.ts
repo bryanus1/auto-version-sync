@@ -13,7 +13,7 @@ async function run(): Promise<void> {
 
     console.log({ currentVersion, level });
   } catch (error) {
-    console.error(`Error: ${error}`);
+    core.setFailed(error.message);
   }
 }
 
