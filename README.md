@@ -74,6 +74,6 @@ Action Add Labels is released under the [MIT License](./LICENSE).
 <!-- badge links -->
 
 [release]: https://github.com/actions-ecosystem/action-add-labels/releases
-[release-badge]: https://img.shields.io/gitea/v/release/bryanus1/auto-version-sync
+[release-badge]: https://img.shields.io/github/package-json/v/bryanus1/auto-version-sync
 [license]: LICENSE
 [license-badge]: https://img.shields.io/github/license/bryanus1/auto-version-sync
