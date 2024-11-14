@@ -6,7 +6,7 @@
   "author": "Brayan Sanjuan <bryan.sj175@gmail.com>",
   "description": "A GitHub Action to automatically sync project versions based on labels in pull requests. This action increments the software version in the package.json file and creates a new GitHub tag based on the configured PR labels, allowing for more efficient and automated version control.",
   "scripts": {
-    "start:dev": "nodemon src/test.ts",
+    "start:dev": "nodemon src/index.ts",
     "build": "rimraf dist && tsc && tsc-alias && ncc build dist/index.js -o lib",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
