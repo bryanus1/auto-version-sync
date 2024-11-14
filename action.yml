@@ -1,6 +1,6 @@
-name: Auto version Synchronization
-description: ""
 author: Brayan Sanjuan
+name: Auto version Synchronization
+description: "A GitHub Action to automatically sync project versions based on labels in pull requests. This action increments the software version in the package.json file and creates a new GitHub tag based on the configured PR labels, allowing for more efficient and automated version control."
 
 inputs:
   current_version:
