@@ -22,7 +22,7 @@ export async function run(inputs: Inputs): Promise<[string, string]> {
 
   await runInWorkspace(
     'git',
-    ['config', 'user.name', gitUsername && 'github-actions[bot]'],
+    ['config', 'user.name', gitUsername || 'github-actions[bot]'],
     workspace,
   );
   await runInWorkspace(
@@ -30,7 +30,7 @@ export async function run(inputs: Inputs): Promise<[string, string]> {
     [
       'config',
       'user.email',
-      gitEmail && 'github-actions[bot]@users.noreply.github.com',
+      gitEmail || 'github-actions[bot]@users.noreply.github.com',
     ],
     workspace,
   );
