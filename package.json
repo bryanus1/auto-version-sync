@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "author": "Brayan Sanjuan <bryan.sj175@gmail.com>",
-  "description": "GitHub Action para sincronizar automáticamente las versiones de un proyecto mediante etiquetas (labels) en los pull requests. Esta acción incrementa la versión del software en el archivo package.json y crea un nuevo tag de GitHub basado en las etiquetas configuradas en el PR, permitiendo un control de versiones más eficiente y automatizado.",
+  "description": "A GitHub Action to automatically sync project versions based on labels in pull requests. This action increments the software version in the package.json file and creates a new GitHub tag based on the configured PR labels, allowing for more efficient and automated version control.",
   "scripts": {
     "start:dev": "nodemon src/test.ts",
     "build": "rimraf dist && tsc && tsc-alias && ncc build dist/index.js -o lib",

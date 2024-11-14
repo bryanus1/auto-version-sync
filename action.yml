@@ -22,3 +22,7 @@ outputs:
 runs:
   using: node20
   main: lib/index.js
+
+branding:
+  icon: check
+  color: white
