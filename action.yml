@@ -13,6 +13,14 @@ inputs:
     required: false
     description: A semver update level ({major, minor, patch}).
 
+  git_username:
+    required: false
+    description: name of git
+
+  git_email:
+    required: false
+    description: email of git
+
 outputs:
   new_version:
     description: The bumped semver version.
