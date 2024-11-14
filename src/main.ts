@@ -1,6 +1,5 @@
 import * as semver from 'semver';
 
-import { validLevel } from './valid-levels';
 import { runInWorkspace } from './run-in-workspace';
 
 export async function run(inputs: {
@@ -10,7 +9,12 @@ export async function run(inputs: {
   const { level, currentVersion } = inputs;
   const workspace = process.env.GITHUB_WORKSPACE;
 
-  validLevel(level);
+  const LEVELS_VALID = ['major', 'minor', 'patch'];
+  if (!LEVELS_VALID.includes(level)) {
+    throw Error(
+      `${level} is invalid, levels valid are ${LEVELS_VALID.join(', ')}`,
+    );
+  }
 
   if (!semver.valid(currentVersion)) {
     throw new Error(`${currentVersion} is not a valid semver`);

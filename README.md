@@ -12,16 +12,16 @@ A GitHub Action to automatically sync project versions based on labels in pull r
 | `level`           | A semver update level ({major, minor, patch}). | `string` | `false`  | `minor` |
 | `current_version` | The current version.                           | `string` | `false`  | `0.1.0` |
 
+## Outputs
+
+| NAME                    | DESCRIPTION                            | TYPE     | Example  |
+| ----------------------- | -------------------------------------- | -------- | -------- |
+| `new_version`           | The bumped semver version.             | `string` | `v1.0.0` |
+| `new_version_without_v` | The bumped semver version without "v". | `string` | `1.0.0`  |
+
 ## Example
 
 ```yaml
-name: Auto Version Sync
-
-on:
-  push:
-    branches:
-      - main
-
 permissions:
   contents: write
 
@@ -32,24 +32,11 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: bryanus1/auto-version-sync@v1.0.0
-        with:
-          level: ${{ github.event.inputs.level }}
-          current_version: ${{ github.event.inputs.current_version }}
 ```
 
 ### With inputs
 
 ```yaml
-name: Auto Version Sync
-
-on:
-  workflow_dispatch:
-    inputs:
-      current_version:
-        required: false
-      level:
-        required: false
-
 permissions:
   contents: write
 
@@ -61,8 +48,8 @@ jobs:
 
       - uses: bryanus1/auto-version-sync@v1.0.0
         with:
-          level: ${{ github.event.inputs.level }}
-          current_version: ${{ github.event.inputs.current_version }}
+          level: 'patch'
+          current_version: v1.0.0
 ```
 
 ## License

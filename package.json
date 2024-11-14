@@ -11,6 +11,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
+    "test:cov": "jest --coverage",
     "prepare": "if [\"$NODE_ENV\" = \"local\"]; then husky install; fi"
   },
   "keywords": [
@@ -84,7 +85,8 @@
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s",
-      "!**/lib/*.js"
+      "!**/lib/*.js",
+      "!**/index.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
