@@ -7,10 +7,12 @@ A GitHub Action to automatically sync project versions based on labels in pull r
 
 ## Inputs
 
-| NAME              | DESCRIPTION                                    | TYPE     | REQUIRED | DEFAULT |
-| ----------------- | ---------------------------------------------- | -------- | -------- | ------- |
-| `level`           | A semver update level ({major, minor, patch}). | `string` | `false`  | `minor` |
-| `current_version` | The current version.                           | `string` | `false`  | `0.1.0` |
+| NAME              | DESCRIPTION                                    | TYPE     | REQUIRED | DEFAULT                                        |
+| ----------------- | ---------------------------------------------- | -------- | -------- | ---------------------------------------------- |
+| `level`           | A semver update level ({major, minor, patch}). | `string` | `false`  | `minor`                                        |
+| `current_version` | The current version.                           | `string` | `false`  | `0.1.0`                                        |
+| `git_username`    | Git user.name                                  | `string` | `false`  | `github-actions[bot]`                          |
+| `git_email`       | Git user.email                                 | `string` | `false`  | `github-actions[bot]@users.noreply.github.com` |
 
 ## Outputs
 
@@ -34,7 +36,7 @@ jobs:
       - uses: bryanus1/auto-version-sync@v1.0.0
 ```
 
-### With inputs
+### With Parameters
 
 ```yaml
 permissions:
@@ -50,6 +52,8 @@ jobs:
         with:
           level: 'patch'
           current_version: v1.0.0
+          git_username: bryanus1
+          git_email: email@example.com
 ```
 
 ## License
@@ -60,7 +64,7 @@ Action Add Labels is released under the [MIT License](./LICENSE).
 
 <!-- badge links -->
 
-[release]: https://github.com/actions-ecosystem/action-add-labels/releases
-[release-badge]: https://img.shields.io/github/package-json/v/bryanus1/auto-version-sync
+[release]: https://github.com/bryanus1/auto-version-sync/releases
+[release-badge]: https://img.shields.io/github/v/release/bryanus1/auto-version-sync
 [license]: LICENSE
 [license-badge]: https://img.shields.io/github/license/bryanus1/auto-version-sync
