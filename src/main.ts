@@ -1,13 +1,11 @@
 import * as semver from 'semver';
 
+import { Inputs } from './types';
 import { runInWorkspace } from './run-in-workspace';
 
-export async function run(inputs: {
-  level: string;
-  currentVersion: string;
-}): Promise<[string, string]> {
-  const { level, currentVersion } = inputs;
+export async function run(inputs: Inputs): Promise<[string, string]> {
   const workspace = process.env.GITHUB_WORKSPACE;
+  const { level, currentVersion, gitUsername, gitEmail } = inputs;
 
   const LEVELS_VALID = ['major', 'minor', 'patch'];
   if (!LEVELS_VALID.includes(level)) {
@@ -24,12 +22,16 @@ export async function run(inputs: {
 
   await runInWorkspace(
     'git',
-    ['config', 'user.name', 'github-actions[bot]'],
+    ['config', 'user.name', gitUsername && 'github-actions[bot]'],
     workspace,
   );
   await runInWorkspace(
     'git',
-    ['config', 'user.email', 'github-actions[bot]@users.noreply.github.com'],
+    [
+      'config',
+      'user.email',
+      gitEmail && 'github-actions[bot]@users.noreply.github.com',
+    ],
     workspace,
   );
 

@@ -7,10 +7,14 @@ async function run() {
   try {
     const level = getInput('level');
     const currentVersion = getInput('current_version');
+    const gitUsername = getInput('git_username');
+    const gitEmail = getInput('git_email');
 
     const [newVersion, newVersionWithoutV] = await executeAction({
       level,
       currentVersion,
+      gitEmail,
+      gitUsername,
     });
 
     setOutput('new_version', newVersion);
